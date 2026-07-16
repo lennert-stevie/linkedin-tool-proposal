@@ -132,6 +132,17 @@
   @keyframes scw-tabB { 0%{fill:#eef2f8} 50%{fill:#eef2f8} 56%{fill:#1e3a8a} 96%{fill:#1e3a8a} 100%{fill:#eef2f8} }
   @media (prefers-reduced-motion: reduce) { .scw-p2, .scw-ping1, .scw-ping2, .scw-cur { opacity:0 !important; } }
 
+  /* Investment tables: stack cleanly on mobile instead of squeezing 4 columns */
+  @media (max-width:640px) {
+    .sc-tbl-head { display:none !important; }
+    .sc-tbl-row { display:block !important; position:relative; padding-right:104px !important; }
+    .sc-tbl-row > div:nth-child(1) { margin-bottom:5px; }
+    .sc-tbl-row > div:nth-child(2),
+    .sc-tbl-row > div:nth-child(3) { display:inline; font-size:13.5px !important; color:var(--slate-500) !important; }
+    .sc-tbl-row > div:nth-child(2)::after { content:" · "; color:var(--slate-300); }
+    .sc-tbl-row > div:nth-child(4) { position:absolute; right:clamp(16px,3vw,24px); top:50%; transform:translateY(-50%); font-size:20px !important; }
+  }
+
   @media print { .sc-desk { padding: 0 !important; } html.reveal-ready .reveal { opacity:1 !important; transform:none !important; } }
 </style>
 </head>
@@ -430,16 +441,16 @@
         </div>
 
         <div class="reveal" style="border:1px solid var(--border-subtle); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm);">
-          <div style="display:grid; grid-template-columns:2fr 1fr 1.3fr 1.1fr; background:var(--surface-subtle); padding:12px clamp(16px,3vw,24px); font-family:var(--font-body); font-weight:600; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-500);">
+          <div class="sc-tbl-head" style="display:grid; grid-template-columns:2fr 1fr 1.3fr 1.1fr; background:var(--surface-subtle); padding:12px clamp(16px,3vw,24px); font-family:var(--font-body); font-weight:600; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-500);">
             <div>Optie</div><div>Dagen</div><div>Tarief</div><div style="text-align:right;">Totaal</div>
           </div>
-          <div style="display:grid; grid-template-columns:2fr 1fr 1.3fr 1.1fr; align-items:center; padding:18px clamp(16px,3vw,24px); background:#fff; border-bottom:1px solid var(--border-subtle);">
+          <div class="sc-tbl-row" style="display:grid; grid-template-columns:2fr 1fr 1.3fr 1.1fr; align-items:center; padding:18px clamp(16px,3vw,24px); background:#fff; border-bottom:1px solid var(--border-subtle);">
             <div style="font-size:15px; font-weight:600; color:var(--slate-800);">Claude Project</div>
             <div style="font-size:14px; color:var(--slate-600);">1 dag</div>
             <div style="font-size:14px; color:var(--slate-600);">€ 600 / dag</div>
             <div style="text-align:right; font-family:var(--font-display); font-size:clamp(20px,4.5vw,24px); font-weight:600; color:var(--blue-700);">€ 600</div>
           </div>
-          <div style="display:grid; grid-template-columns:2fr 1fr 1.3fr 1.1fr; align-items:center; padding:18px clamp(16px,3vw,24px); background:var(--surface-page);">
+          <div class="sc-tbl-row" style="display:grid; grid-template-columns:2fr 1fr 1.3fr 1.1fr; align-items:center; padding:18px clamp(16px,3vw,24px); background:var(--surface-page);">
             <div style="font-size:15px; font-weight:500; color:var(--slate-700);">n8n-automatisering</div>
             <div style="font-size:14px; color:var(--slate-600);">3 dagen</div>
             <div style="font-size:14px; color:var(--slate-600);">€ 600 / dag</div>
@@ -531,10 +542,10 @@
 
             <!-- overview -->
             <div style="border:1px solid var(--border-subtle); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); margin-top:24px;">
-              <div style="display:grid; grid-template-columns:2fr 1fr 1.3fr 1.1fr; background:var(--surface-subtle); padding:12px clamp(16px,3vw,24px); font-family:var(--font-body); font-weight:600; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-500);">
+              <div class="sc-tbl-head" style="display:grid; grid-template-columns:2fr 1fr 1.3fr 1.1fr; background:var(--surface-subtle); padding:12px clamp(16px,3vw,24px); font-family:var(--font-body); font-weight:600; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate-500);">
                 <div>Add-on</div><div>Dagen</div><div>Tarief</div><div style="text-align:right;">Totaal</div>
               </div>
-              <div style="display:grid; grid-template-columns:2fr 1fr 1.3fr 1.1fr; align-items:center; padding:18px clamp(16px,3vw,24px); background:#fff;">
+              <div class="sc-tbl-row" style="display:grid; grid-template-columns:2fr 1fr 1.3fr 1.1fr; align-items:center; padding:18px clamp(16px,3vw,24px); background:#fff;">
                 <div style="font-size:15px; font-weight:600; color:var(--slate-800);">Website <span style="font-weight:500; color:var(--slate-500);">· one-pager of multi-pager</span></div>
                 <div style="font-size:14px; color:var(--slate-600);">5 dagen</div>
                 <div style="font-size:14px; color:var(--slate-600);">€ 600 / dag</div>
